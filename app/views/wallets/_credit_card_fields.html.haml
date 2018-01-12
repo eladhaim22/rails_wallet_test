@@ -1,0 +1,11 @@
+%div{:class => 'col-md-8 nested-fields'}
+	= link_to_remove_association 'x', f
+	%div{:class => 'row'}
+		%div{:class => 'col-md-1'}
+			%i{:class => 'fa fa-cc-visa fa-3',:style => 'font-size: 2em;'}
+		%div{:class => 'col-md-4'}
+			=f.text_field(:number,  placeholder: 'Credit Number')
+		%div{:class => 'col-md-4'}
+			=f.text_field(:CCV, placeholder: 'CCV')
+		%div{:class => 'col-md-3'}
+			=f.text_field(:expiration_date, placeholder: 'Expiration Date')

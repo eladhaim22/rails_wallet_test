@@ -1,0 +1,16 @@
+= simple_form_for(@wallet) do |f|
+  - if @wallet.errors.any?
+    %div{:id => "error_explanation"}
+      %h2 =pluralize(@wallet.errors.count, "error") prohibited this wallet from being saved:
+      %ul
+        - @wallet.errors.full_messages.each do |message|
+          %li=message
+  %div{:class=>"field"}
+    .col-md-8
+      =f.text_field :name, :placeholder => 'wallet name'
+    =f.simple_fields_for :credit_cards do |credit_card|
+      =render 'credit_card_fields_with_hidden_number', f: credit_card
+    .links
+      =link_to_add_association 'add credit_card', f, :credit_cards
+  %div{:class =>"actions"}
+    =f.submit
